@@ -19,7 +19,7 @@ function setDatabaseConnection()
 
 function addUser($username, $password, $connection)
 {
-  $query = "INSERT INTO users(username, password)";
+  $query = "INSERT INTO `users`(username, password)";
   $query .= "VALUES ('$username', '$password')";
   $result_query = $connection->query($query);
 
@@ -31,20 +31,20 @@ function addUser($username, $password, $connection)
 function getUsers($connection)
 {
   // select query fro database
-  $sql = "SELECT * FROM users";
+  $sql = "SELECT * FROM `users`";
   $users = [];
 
-  if ($result = $connection->query($sql)) {
-    while ($data = $result->fetch_object()) {
-      $users[] = $data;
-    }
-  }
+  // if ($result = $connection->query($sql)) {
+  //   while ($data = $result->fetch_object()) {
+  //     $users[] = $data;
+  //   }
+  // }
 
-  foreach ($users as $user) {
-    echo "<ul>";
-    echo "<li>" . $user->username . " ---- " . $user->password . "</li>";
-    echo "</ul";
-  }
+  // foreach ($users as $user) {
+  //   echo "<ul>";
+  //   echo "<li>" . $user->username . " ---- " . $user->password . "</li>";
+  //   echo "</ul";
+  // }
 
   if ($result = $connection->query($sql)) {
     while ($row = $result->fetch_assoc()) {

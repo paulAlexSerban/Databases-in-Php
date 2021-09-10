@@ -1,9 +1,14 @@
-<?php include './functions.php';
-      include "./head.php"; ?>
+<?php
+include "../logic/db_connection.php";
+include '../logic/functions.php';
+include "../structure/head.php";
+include "../structure/footer.php";
+setDatabaseConnection(); ?>
 
 
-  <div class='container'>
-    <div class="col-sm-6">
+<div class='container p-5'>
+  <div class='row'>
+    <div class="col">
       <form action="login_update.php" method="post">
         <div class="form-group">
           <label class="form-label" for="username">Username</label>
@@ -16,28 +21,23 @@
         <div class="form-group">
           <select name="id">
             <?php
-              setDatabaseConnection();
-              showAllIds($connection);
+            setDatabaseConnection();
+            showAllIds($connection);
             ?>
           </select>
         </div>
         <br>
         <input class="btn btn-primary" type="submit" value="Update" name="submit">
       </form>
-    </div>
-  </div>
-  <br>
-  <hr>
-  <div class="container">
-    <div class="col-sm-6">
-      <?php 
-      
-      if(isset($_POST['submit'])) {
+
+      <?php
+
+      if (isset($_POST['submit'])) {
         $sub_username = $_POST['username'];
         $sub_password = $_POST['password'];
         $sub_id = $_POST['id'];
 
-        if($sub_username && $sub_password) {
+        if ($sub_username && $sub_password) {
           echo "<p>" . $sub_username . " your password is " . $sub_password . "</p>";
           echo '<hr>';
 
@@ -49,11 +49,13 @@
 
       ?>
     </div>
-    <div class="col-sm-6">
-      <?php
-        getUsers($connection);
-      ?>
+    <div class="col">
+    <?php
+    getUsers($connection);
+    ?>
     </div>
   </div>
+</div>
 </body>
+
 </html>
