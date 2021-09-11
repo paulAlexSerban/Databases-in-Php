@@ -9,7 +9,7 @@ setDatabaseConnection(); ?>
 <div class='container p-5'>
   <div class='row '>
     <div class="col">
-      <form action="login.php" method="post">
+      <form action="login_add.php" method="post">
         <div class="form-group">
           <label class="form-label" for="username">Username</label>
           <input type="text" class="form-control" name="username">
@@ -35,7 +35,7 @@ setDatabaseConnection(); ?>
           echo "<p>" . $sub_username . " your password is " . $sub_password . "</p>";
           echo '<hr>';
 
-          addUser($sub_username, $sub_password, $connection);
+          addUser($sub_username, securePassword($sub_password), $connection);
         } else {
           echo '<p>NO field should be left blank</p>';
         }
