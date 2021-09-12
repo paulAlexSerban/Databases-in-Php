@@ -11,7 +11,18 @@ $expiration = time() + ((60*60*24*7)); // set expiration from current day of set
 setcookie($name, $value, $expiration);
 
 include "../structure/head.php";
+
+// read the cookies if it was set
+
+if(isset($_COOKIE[$name])) {
+  $someOne = $_COOKIE[$name];
+  echo $someOne;
+} else {
+  $someOne = '';
+}
 ?>
+
+
   
 </body>
 </html>
